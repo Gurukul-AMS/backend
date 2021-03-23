@@ -6,6 +6,7 @@ const courseSchema  = new mongoose.Schema({
     semester: String,
     section: String,
     profName: String,
+    students: [String],
     timeTable: {
         data: Buffer,
         contentType: String

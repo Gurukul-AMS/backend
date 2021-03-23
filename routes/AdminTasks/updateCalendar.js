@@ -5,6 +5,16 @@ const Calendar = require("../../models/content/calendar");
 
 router.get("/", function(req, res){
 
+    Calendar.find({}, function(err, result){
+        if(err) {
+            console.log(err);
+        } else if (result) {
+            res.send(result);
+        } else {
+            res.send("None");
+        }
+    });
+
 });
 
 router.post("/", function(req, res){
