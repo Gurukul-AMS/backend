@@ -3,8 +3,7 @@ const findOrCreate = require("mongoose-findorcreate");
 
 const marksSchema = new mongoose.Schema({
     component: String,
-    semester: String,
-    section: String,
+    class: String,
     course: String,
     record: [{
         id: String,

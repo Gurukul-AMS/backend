@@ -40,3 +40,5 @@ router.post("/", function(req, res){
         res.redirect("/api/login");
 
 });
+
+module.exports = router;

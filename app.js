@@ -83,21 +83,42 @@ const calendarRoute = require("./routes/AdminTasks/updateCalendar");
 const logoutRoute = require("./routes/Auth/Logout");
 const viewCalendar = require("./routes/General/viewCalendar");
 const getCourses = require("./routes/FacultyTasks/getCourses");
+const uploadMarks = require("./routes/FacultyTasks/setMarks");
+const upAttendance = require("./routes/FacultyTasks/markAttendance");
+const viewMarks = require("./routes/StudentTasks/viewMarks");
+const viewAttend = require("./routes/StudentTasks/viewAttendance");
+const viewUsers = require("./routes/AdminTasks/allUsers");
 
 /*------ App Config---------------*/
+
+// For all users
 
 app.use("/api/login", loginRoute);
 app.use("/api/register", registerRoute);
 app.use("/api/profile", Profile);
 app.use("/api/profile/edit", EditProfile);
 app.use("/api/isloggedin", isLoggedIn);
+app.use("/api/calendar", viewCalendar);
+app.use("/api/logout", logoutRoute);
+
+// For Admin only
+
 app.use("/api/logs", logRoute);
 app.use("/api/addclass", classRoute);
 app.use("/api/addcourse", courseRoute);
 app.use("/api/addcalendar", calendarRoute);
-app.use("/api/logout", logoutRoute);
-app.use("/api/calendar", viewCalendar);
+app.use("/api/allusers", viewUsers);
+
+// For Faculty only
+
+app.use("/api/addmarks", uploadMarks);
+app.use("/api/addattend", upAttendance);
 app.use("/api/getcourses", getCourses);
+
+// For Student only
+
+app.use("/api/viewmarks", viewMarks);
+app.use("/api/viewattend", viewAttend);
 
 /*------ App Config Done--------- */
 

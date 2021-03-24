@@ -4,17 +4,20 @@ const Course = require("../../models/content/course");
 
 router.get("/", function(req, res){
     if(req.user.role == "Faculty") {
-        
-        var courses = [];
+    
+        Course.find({profName: req.user._id}, function(err, results){
 
-        Course.find({profName: req.user._id}, function(results){
-            if(results) {
-                results.forEach(function(result){
-                    courses.push(result);
-                });
-                res.send(courses);
+            var courses = [];
+
+            if(err) {
+                console.log(err);
+
             } else {
-                res.send("Sorry :(");
+                results.forEach(function(result){
+                    // if(result.profName === req.user._id) 
+                        courses.push(result);
+                })
+                res.send(courses);
             }
         });
     }
