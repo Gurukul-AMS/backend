@@ -34,7 +34,7 @@ router.post("/", (req, res) => {
                 time: nowTime, 
                 date: nowDate,
                 action: "Registered",
-                actor: user
+                actor: user.username
             });
 
             log.save(function(err){

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Attendance = require("../../models/content/attendance");
+const Log = require("../../models/content/log");
 
 router.get("/", function(req, res){
 
@@ -39,3 +40,5 @@ router.post("/", function(req, res){
         res.redirect("/api/login");
 
 });
+
+module.exports = router;

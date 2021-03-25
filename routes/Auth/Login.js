@@ -24,14 +24,14 @@ router.post("/", (req, res) => {
                 console.log(req.user);
 
                 var temp = new Date();
-                var nowDate = temp.getFullYear()+'/'+temp.getMonth()+'/'+temp.getDate();
+                var nowDate = temp.getFullYear()+'/'+(temp.getMonth()+1)+'/'+temp.getDate();
                 var nowTime = temp.getHours()+':'+temp.getMinutes()+':'+temp.getSeconds();
 
                 const log = new Log({
                     time: nowTime, 
                     date: nowDate,
                     action: "Logged In",
-                    actor: req.user
+                    actor: req.user.username
                 });
 
                 log.save(function(err){
@@ -42,7 +42,7 @@ router.post("/", (req, res) => {
                     }
                 });
 
-                res.redirect("/api/"+user.role);
+                res.redirect("/api/profile");
             });
         }
     });

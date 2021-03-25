@@ -10,6 +10,8 @@ const userSchema  = new mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
+    class: String,
+    notifications: [String],
     profilePic: {
         data: Buffer,
         contentType: String

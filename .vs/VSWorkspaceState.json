@@ -2,10 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\models",
+    "\\models\\content",
     "\\models\\roles",
     "\\routes",
-    "\\routes\\Auth"
+    "\\routes\\AdminTasks",
+    "\\routes\\Auth",
+    "\\routes\\FacultyTasks",
+    "\\routes\\Profile",
+    "\\routes\\StudentTasks"
   ],
-  "SelectedNode": "\\routes\\Auth\\Logout.js",
+  "SelectedNode": "\\routes\\AdminTasks\\createCourse.js",
   "PreviewInSolutionExplorer": false
 }
