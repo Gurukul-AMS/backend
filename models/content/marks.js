@@ -3,12 +3,13 @@ const findOrCreate = require("mongoose-findorcreate");
 
 const marksSchema = new mongoose.Schema({
     component: String,
-    class: String,
+    section: String,
+    semester: String,
     course: String,
-    record: [{
+    record: {
         id: String,
         scored: Number
-    }]
+    }
 });
 
 marksSchema.plugin(findOrCreate);

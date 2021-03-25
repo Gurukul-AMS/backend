@@ -2,8 +2,22 @@ const express = require("express");
 const router = express.Router();
 const Marks = require("../../models/content/marks");
 const Log = require("../../models/content/log");
+const Course = require("../../models/content/course");
 
-router.get("/", function(req, res){
+router.get("/", function (req, res) {
+
+    if (req.user.role == "Faculty") {
+
+        Course.find({ profName: req.user._id }, function (err, courses) {
+            if (err) {
+                console.log(err);
+            } else if (courses) {
+                res.send(courses);
+                // console.log("Not working");
+                // console.log(courses);
+            }
+        });
+    }
 
 });
 
@@ -13,9 +27,13 @@ router.post("/", function(req, res) {
     {
         const marks = new Marks({
             component: req.body.component,
-            class: req.body.class,
+            section: req.body.class,
+            semester: req.body.semester,
             course: req.body.course,
-            record: req.body.recArray
+            record: {
+                id: req.body.student,
+                scored: req.body.cg
+            }
         });
 
         marks.save(function(err){
@@ -37,6 +55,8 @@ router.post("/", function(req, res) {
                 log.save(function(err){
                     if(err) {
                         console.log(err);
+                    } else {
+                        console.log("Marks updated");
                     }
                 });
             }

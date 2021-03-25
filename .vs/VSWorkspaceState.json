@@ -7,8 +7,10 @@
     "\\routes",
     "\\routes\\AdminTasks",
     "\\routes\\Auth",
-    "\\routes\\Profile"
+    "\\routes\\FacultyTasks",
+    "\\routes\\Profile",
+    "\\routes\\StudentTasks"
   ],
-  "SelectedNode": "\\app.js",
+  "SelectedNode": "\\routes\\AdminTasks\\createCourse.js",
   "PreviewInSolutionExplorer": false
 }

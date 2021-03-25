@@ -7,17 +7,11 @@ router.get("/", function(req, res){
     
         Course.find({profName: req.user._id}, function(err, results){
 
-            var courses = [];
-
             if(err) {
                 console.log(err);
 
-            } else {
-                results.forEach(function(result){
-                    // if(result.profName === req.user._id) 
-                        courses.push(result);
-                })
-                res.send(courses);
+            } else if(results) { 
+                res.send(results);
             }
         });
     }

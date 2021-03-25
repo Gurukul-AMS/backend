@@ -88,6 +88,8 @@ const upAttendance = require("./routes/FacultyTasks/markAttendance");
 const viewMarks = require("./routes/StudentTasks/viewMarks");
 const viewAttend = require("./routes/StudentTasks/viewAttendance");
 const viewUsers = require("./routes/AdminTasks/allUsers");
+const studClass = require("./routes/AdminTasks/updateClass");
+const studCourse = require("./routes/AdminTasks/updateCourse");
 
 /*------ App Config---------------*/
 
@@ -108,6 +110,8 @@ app.use("/api/addclass", classRoute);
 app.use("/api/addcourse", courseRoute);
 app.use("/api/addcalendar", calendarRoute);
 app.use("/api/allusers", viewUsers);
+app.use("/api/class", studClass);
+app.use("/api/course", studCourse);
 
 // For Faculty only
 
