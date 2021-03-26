@@ -90,6 +90,9 @@ const viewAttend = require("./routes/StudentTasks/viewAttendance");
 const viewUsers = require("./routes/AdminTasks/allUsers");
 const studClass = require("./routes/AdminTasks/updateClass");
 const studCourse = require("./routes/AdminTasks/updateCourse");
+const sendClass = require("./routes/StudentTasks/sendClass");
+const sendCourse = require("./routes/StudentTasks/sendCourse");
+const notifRoute = require("./routes/General/getNotifs");
 
 /*------ App Config---------------*/
 
@@ -102,6 +105,7 @@ app.use("/api/profile/edit", EditProfile);
 app.use("/api/isloggedin", isLoggedIn);
 app.use("/api/calendar", viewCalendar);
 app.use("/api/logout", logoutRoute);
+app.use("/api/notifs", notifRoute);
 
 // For Admin only
 
@@ -123,6 +127,8 @@ app.use("/api/getcourses", getCourses);
 
 app.use("/api/viewmarks", viewMarks);
 app.use("/api/viewattend", viewAttend);
+app.use("/api/sendclass", sendClass);
+app.use("/api/snedcourse", sendCourse);
 
 /*------ App Config Done--------- */
 

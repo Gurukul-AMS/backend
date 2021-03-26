@@ -7,7 +7,7 @@ const notifSchema = new mongoose.Schema({
     content: String,
     time: String,
     date: String,
-    status: String
+    status: Boolean
 });
 
 notifSchema.plugin(findOrCreate);
