@@ -128,7 +128,7 @@ app.use("/api/getcourses", getCourses);
 app.use("/api/viewmarks", viewMarks);
 app.use("/api/viewattend", viewAttend);
 app.use("/api/sendclass", sendClass);
-app.use("/api/snedcourse", sendCourse);
+app.use("/api/sendcourse", sendCourse);
 
 /*------ App Config Done--------- */
 

@@ -1,7 +1,31 @@
 const express = require("express");
 const router = express.Router();
 const Notification = require('../../models/content/notification');
+const Class = require("../../models/content/class");
+const Course = require("../../models/content/course");
 const User = require("../../models/roles/user");
+
+router.get("/", function(req, res){
+    if(req.user) {
+        
+        console.log(req.user.class)
+        Class.findOne({_id: req.user.class}, function(err, found){
+            if(err) {
+                console.log(err);
+            } else if (found) {
+
+                Course.find({section: found.section, semester: found.semester, function(err, courses){
+                    if(err) {
+                        console.log(err);
+                    } else if(courses) {
+                        res.send(courses);
+                        console.log(courses);
+                    }
+                }});
+            }
+        });
+    }
+});
 
 router.post("/", function(req, res){
     if(req.user.role == "Student") {

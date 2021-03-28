@@ -2,6 +2,19 @@ const express = require("express");
 const router = express.Router();
 const Notification = require("../../models/content/notification");
 const User = require("../../models/roles/user");
+const Class = require("../../models/content/course");
+
+router.get("/", function(req, res){
+    if(req.user) {
+        Class.find({}, function(err, classes){
+            if(err) {
+                console.log(err);
+            } else if (classes) {
+                res.send(classes);
+            }
+        });
+    }
+});
 
 router.post("/", function(req, res){
     
