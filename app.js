@@ -93,6 +93,7 @@ const studCourse = require("./routes/AdminTasks/updateCourse");
 const sendClass = require("./routes/StudentTasks/sendClass");
 const sendCourse = require("./routes/StudentTasks/sendCourse");
 const notifRoute = require("./routes/General/getNotifs");
+const makeNotifs = require("./routes/General/makeNotifs");
 
 /*------ App Config---------------*/
 
@@ -106,6 +107,7 @@ app.use("/api/isloggedin", isLoggedIn);
 app.use("/api/calendar", viewCalendar);
 app.use("/api/logout", logoutRoute);
 app.use("/api/notifs", notifRoute);
+app.use("/api/makenotifs", makeNotifs);
 
 // For Admin only
 
