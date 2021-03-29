@@ -57,6 +57,7 @@ router.post("/", function(req, res) {
                         console.log(err);
                     } else {
                         console.log("Marks updated");
+                        res.send(true);
                     }
                 });
             }

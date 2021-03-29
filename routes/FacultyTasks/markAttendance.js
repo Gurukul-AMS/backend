@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const Attendance = require("../../models/content/attendance");
 const Log = require("../../models/content/log");
+const User = require("../../models/roles/user");
+const Class = require("../../models/content/class");
 
 router.get("/", function(req, res){
-
+    res.send("Welcome to attendance");
 });
 
 router.post("/", function(req, res){
@@ -28,6 +30,7 @@ router.post("/", function(req, res){
                     console.log(err);
                 } else {
                     console.log("New attendance record submitted.");
+                    res.send(true);
                 }
             });
         }
