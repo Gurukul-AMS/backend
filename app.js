@@ -94,6 +94,7 @@ const sendClass = require("./routes/StudentTasks/sendClass");
 const sendCourse = require("./routes/StudentTasks/sendCourse");
 const notifRoute = require("./routes/General/getNotifs");
 const makeNotifs = require("./routes/General/makeNotifs");
+const myCourse = require("./routes/StudentTasks/getCourses");
 
 /*------ App Config---------------*/
 
@@ -131,6 +132,7 @@ app.use("/api/viewmarks", viewMarks);
 app.use("/api/viewattend", viewAttend);
 app.use("/api/sendclass", sendClass);
 app.use("/api/sendcourse", sendCourse);
+app.use("/api/mycourse", myCourse);
 
 /*------ App Config Done--------- */
 

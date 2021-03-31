@@ -7,20 +7,25 @@ router.get("/", function(req, res){
 
     if(req.user.role == "Student") {
 
-        Course.findOne({students: req.user._id}, function(err, found){
+        Course.findOne({students: req.user.username}, function(err, found){
             if(err) {
                 console.log(err);
             } else if (found) {
                 
+                // console.log(found);
                 var whichCourse = found._id;
 
-                Marks.find({course: whichCourse, class: req.user.class}, function(err, results){
+                Marks.find({course: whichCourse}, function(err, results){
                     if(err) {
                         console.log(err);
                     } else if (results) {
                         res.send(results);
+                        // console.log(results);
                     }
                 });
+            }
+            else {
+                console.log("None found");
             }
         });
     }
