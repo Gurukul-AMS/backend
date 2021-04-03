@@ -1,7 +1,6 @@
 const express = require("express");
 const User = require("../../models/roles/user");
-const Class = require("../../models/content/class");
-const Course = require("../../models/content/course");
+const Notification = require("../../models/content/notification");
 const router = express.Router();
 
 router.get("/", function(req, res){
@@ -10,49 +9,76 @@ router.get("/", function(req, res){
 
 router.post("/", function(req, res){
 
-    if(req.user.role =="Admin")
+    var adminArr = [];
+    
+    if(req.user.role == "Student")
     {
-        
-    }
-    else if(req.user.role == "Faculty")
-    {
-        const course = new Course({
-            courseName: req.body.course,
-            semester: req.body.semester,
-            section: req.body.section,
-            profName: req.user.username,
-            timeTable: {
-                data: req.body.data,
-                contentType: req.body.content
-            }
-        });
-
-        course.save(function(err) {
+        User.find({role: "Admin"}, function(err, admins){
             if(err) {
                 console.log(err);
-            } else {
-                console.log("New course added");
-            }
-        });
+            } else if (admins) {
+                admins.forEach(function(admin){
+                    adminArr.push(admin._id);
+                });
 
-        res.redirect("/api/profile");
-    }
-    else if(req.user.role == "Student")
-    {
-        const given = req.body.class;
+                var temp = new Date();
+                var nowDate = temp.getFullYear() + '/' + (temp.getMonth()+1) + '/' + temp.getDate();
+                var nowTime = temp.getHours() + ':' + temp.getMinutes() + ':' + temp.getSeconds();
+        
+                const notif = new Notification({
+                    from: req.user._id,
+                    to: adminArr,
+                    content: "First name: " + req.body.firstName + ", Last name: " + req.body.lastName + ", email: " + req.body.email,
+                    time: nowTime,
+                    date: nowDate,
+                    status: false
+                });
 
-        Class.find({_id: given}, function(found, err){
-            if(found) {
-                User.findOneAndUpdate({_id: req.user._id}, {class: given}, function(err){
+                notif.save(function(err){
                     if(err) {
                         console.log(err);
                     } else {
-                        console.log("Class updated.");
+                        console.log("Successfully sent notification(s).");
+                        res.send("Done");
                     }
-                });
-            } else if (err) {
+                })
+
+            } 
+        });
+    }
+    else if(req.user.role == "Faculty")
+    {
+        User.find({role: "Admin"}, function(err, admins){
+            if(err) {
                 console.log(err);
-            }
+            } else if (admins) {
+                admins.forEach(function(admin){
+                    adminArr.push(admin._id);
+                });
+
+                var temp = new Date();
+                var nowDate = temp.getFullYear() + '/' + (temp.getMonth()+1) + '/' + temp.getDate();
+                var nowTime = temp.getHours() + ':' + temp.getMinutes() + ':' + temp.getSeconds();
+        
+                const notif = new Notification({
+                    from: req.user._id,
+                    to: adminArr,
+                    content: "First name: " + req.body.firstName + ", Last name: " + req.body.lastName + ", email: " + req.body.email,
+                    time: nowTime,
+                    date: nowDate,
+                    status: false
+                });
+
+                notif.save(function(err){
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        console.log("Successfully sent notification(s).");
+                        res.send("Done");
+                    }
+                })
+
+            } 
         });
     }
     
