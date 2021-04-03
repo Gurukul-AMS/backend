@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const findOrCreate = require("mongoose-findorcreate");
 
 const calendarSchema  = new mongoose.Schema({
-    session: String,
+    name: String,
     calendar: {
-        data: Buffer,
+        data: String,
         contentType: String
     }
 });

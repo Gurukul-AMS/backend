@@ -6,7 +6,7 @@ router.get("/", function(req, res){
 
     if(req.user.role == "Student") {
 
-        Attendance.find({present: req.user.role}, function(err, found){
+        Attendance.find({present: req.user.username}, function(err, found){
             if (err) {
                 console.log(err);
             } else if(found){
