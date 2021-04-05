@@ -46,7 +46,7 @@ router.post("/", function(req, res){
                 var nowTime = temp.getHours() + ':' + temp.getMinutes() + ':' + temp.getSeconds();
 
                 const notif = new Notification({
-                    from: req.user._id,
+                    from: req.user.username,
                     to: adminId,
                     content: "I would like to register for the Course "+req.body.course,
                     time: nowTime,

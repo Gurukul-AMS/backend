@@ -23,7 +23,7 @@ router.post("/", function(req ,res){
         var nowTime = temp.getHours() + ':' + temp.getMinutes() + ':' + temp.getSeconds();
 
         const newNotif = new Notification({
-            from: req.user._id,
+            from: req.user.username,
             to: req.body.receivers,
             content: req.body.content,
             time: nowTime,

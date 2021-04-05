@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     },
 
     filename: (req, file, cb) => {
-        useName = req.body.name + '_' + uuidv4() + '.jpg'
+        useName = uuidv4() + '.jpg'
         cb (null, useName);
     }
 });
@@ -49,13 +49,15 @@ router.post("/", upload.single('image'), function(req, res){
                     console.log("Is something even happening X2?");
                     console.log(result);
 
-                    Calendar.findOneAndReplace({_id: result._id}, {
-                            name: req.body.whichYear,
-                            calendar: {
-                                data: useName,
-                                contentType: "image/png"
-                            }
-                        }, function(err){
+                    const newCal = {
+                        name: req.body.whichYear,
+                        calendar: {
+                            data: useName,
+                            contentType: "image/png"
+                        }
+                    }
+
+                    Calendar.findOneAndReplace({}, newCal, null, function(err){
                             if(err) {
                                 console.log(err);
                             } else {
