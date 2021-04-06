@@ -16,6 +16,17 @@ router.get("/", function(req, res){
             }
         });
     }
+
+    else if(req.user.role === "Student") {
+
+        Class.find({_id: req.user.class}, function(err, found){
+            if(err){
+                console.log(err);
+            } else if(found) {
+                res.send(found);
+            }
+        });
+    }
     
 });
 
