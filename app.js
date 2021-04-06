@@ -107,6 +107,7 @@ const makeNotifs = require("./routes/General/makeNotifs");
 const myCourse = require("./routes/StudentTasks/getCourses");
 const allClasses = require("./routes/AdminTasks/allClasses");
 const allCourses = require("./routes/AdminTasks/allCourses");
+const uploadPic = require("./routes/Profile/uploadPicture");
 
 /*------ App Config---------------*/
 
@@ -121,6 +122,7 @@ app.use("/api/calendar", viewCalendar);
 app.use("/api/logout", logoutRoute);
 app.use("/api/notifs", notifRoute);
 app.use("/api/makenotifs", makeNotifs);
+app.use("/api/uploadpic", uploadPic);
 
 // For Admin only
 

@@ -63,7 +63,7 @@ router.post("/", function(req, res){
                 const notif = new Notification({
                     from: req.user._id,
                     to: adminArr,
-                    content: "First name: " + req.body.firstName + ", Last name: " + req.body.lastName + ", email: " + req.body.email,
+                    content: "First name: " + req.body.firstName + ", Last name: " + req.body.lastName + ", email: " + req.body.email + ", course: " + req.body.course,
                     time: nowTime,
                     date: nowDate,
                     status: false

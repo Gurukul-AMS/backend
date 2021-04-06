@@ -13,7 +13,7 @@ const userSchema  = new mongoose.Schema({
     class: String,
     notifications: [String],
     profilePic: {
-        data: Buffer,
+        data: String,
         contentType: String
     },
 });

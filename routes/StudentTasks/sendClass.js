@@ -22,6 +22,22 @@ router.post("/", function(req, res){
         
         var adminId = [];
 
+        var thisClass = {
+            semester: "",
+            section: ""
+        }
+
+        Class.findOne({_id: req.body.class}, function(err, found){
+            if(err) {
+                console.log(err);
+            } else if (found) {
+    
+                thisClass.semester = found.semester;
+                thisClass.section = found.section;
+                console.log(thisClass);
+            }
+        })
+
         User.find({role: "Admin"}, function(err, admins){
             if(err){
                 console.log(err);
@@ -37,7 +53,7 @@ router.post("/", function(req, res){
                 const notif = new Notification({
                     from: req.user.username,
                     to: adminId,
-                    content: "Add me to class "+req.body.class,
+                    content: "Add me to semester " + thisClass['semester'] + ", section " + thisClass['section'],
                     time: nowTime,
                     date: nowDate,
                     status: false
