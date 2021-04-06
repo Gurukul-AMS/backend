@@ -15,6 +15,17 @@ router.get("/", function(req, res){
 
         });
     }
+
+    else if(req.user.role == "Student") {
+
+        User.find({role: "Faculty"}, function(err, profs){
+            if(err){
+                console.log(err);
+            } else if(profs) {
+                res.send(profs);
+            }
+        });
+    }
 });
 
 router.post("/", function(req, res){

@@ -26,7 +26,7 @@ router.post("/", upload.single('myFile'), function(req, res){
 
         const project = new Project({
             from: req.user.username,
-            prof: req.body.profName,
+            prof: req.body.profId,
             thesis: useName,
             status: false
         });

@@ -124,6 +124,7 @@ app.use("/api/logout", logoutRoute);
 app.use("/api/notifs", notifRoute);
 app.use("/api/makenotifs", makeNotifs);
 app.use("/api/uploadpic", uploadPic);
+app.use("/api/allusers", viewUsers);
 
 // For Admin only
 
@@ -131,7 +132,6 @@ app.use("/api/logs", logRoute);
 app.use("/api/addclass", classRoute);
 app.use("/api/addcourse", courseRoute);
 app.use("/api/addcalendar", calendarRoute);
-app.use("/api/allusers", viewUsers);
 app.use("/api/class", studClass);
 app.use("/api/course", studCourse);
 app.use("/api/getclasses", allClasses);
