@@ -18,6 +18,7 @@ router.post("/", (req, res) => {
     req.login(user, (err) => {
         if(err) {
             console.log(err);
+            res.send("Nope");
         } else {
             passport.authenticate("local")(req, res, () => {
                 console.log("Successfully logged in as "+req.user.role+"!");
@@ -42,7 +43,8 @@ router.post("/", (req, res) => {
                     }
                 });
 
-                res.redirect("/api/profile");
+                res.send(req.user);
+
             });
         }
     });
