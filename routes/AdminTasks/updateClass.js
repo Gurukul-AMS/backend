@@ -5,8 +5,6 @@ const Log = require("../../models/content/log");
 
 router.get("/", function(req, res){
 
-    var studArr = [];
-
     User.find({role: "Student"}, function(err, students){
         if(err) {
             console.log(err);

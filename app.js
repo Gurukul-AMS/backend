@@ -106,6 +106,7 @@ const notifRoute = require("./routes/General/getNotifs");
 const makeNotifs = require("./routes/General/makeNotifs");
 const myCourse = require("./routes/StudentTasks/getCourses");
 const allClasses = require("./routes/AdminTasks/allClasses");
+const allCourses = require("./routes/AdminTasks/allCourses");
 
 /*------ App Config---------------*/
 
@@ -131,6 +132,7 @@ app.use("/api/allusers", viewUsers);
 app.use("/api/class", studClass);
 app.use("/api/course", studCourse);
 app.use("/api/getclasses", allClasses);
+app.use("/api/getcourses", allCourses);
 
 // For Faculty only
 

@@ -2,6 +2,22 @@ const express = require("express");
 const router = express.Router();
 const Course = require("../../models/content/course");
 const Log = require("../../models/content/log");
+const User = require("../../models/roles/user");
+
+router.get("/", function(req, res){
+
+    User.find({role: "Student"}, function(err, students){
+        if(err) {
+            console.log(err);
+            res.send("Nope");
+        } else if (students) {
+            res.send(students);
+        } else {
+            console.log("No students found");
+            res.send("Nope");
+        }
+    });
+});
 
 router.post("/", function(req, res){
 
