@@ -7,7 +7,7 @@ const passport = require("passport");
 const cors = require("cors"); 
 const mongoose = require("mongoose");
 
-// require("dotenv/config");
+require("dotenv").config();
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -49,8 +49,18 @@ app.use(passport.session());
 
 /* -------- MongoDB Connection --------------*/
 
-mongoose.connect('mongodb://localhost:27017/amsDB', {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.set("useCreateIndex", true);
+
+var MONGODB_URI = "";
+
+MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@buildone.ttypp.mongodb.net/amsDB?retryWrites=true&w=majority`
+
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error:'));
+db.once('open', function(){
+  console.log("MongoDB Atlas Server Started!");
+});
 
 /* -------- MongoDB Connection Setup Ended ---- */
 
@@ -138,4 +148,4 @@ app.use("/api/mycourse", myCourse);
 
 app.listen(port, function() {
   console.log("Server started at port 5000");
-})
+});

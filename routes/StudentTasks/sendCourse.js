@@ -8,20 +8,20 @@ const User = require("../../models/roles/user");
 router.get("/", function(req, res){
     if(req.user) {
         
-        console.log(req.user.class)
+        // console.log(req.user.class)
         Class.findOne({_id: req.user.class}, function(err, found){
             if(err) {
                 console.log(err);
             } else if (found) {
 
-                Course.find({section: found.section, semester: found.semester, function(err, courses){
+                Course.find({section: found.section, semester: found.semester}, function(err, courses){
                     if(err) {
                         console.log(err);
                     } else if(courses) {
                         res.send(courses);
-                        console.log(courses);
+                        // console.log(courses);
                     }
-                }});
+                });
             }
         });
     }
