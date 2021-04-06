@@ -105,6 +105,7 @@ const sendCourse = require("./routes/StudentTasks/sendCourse");
 const notifRoute = require("./routes/General/getNotifs");
 const makeNotifs = require("./routes/General/makeNotifs");
 const myCourse = require("./routes/StudentTasks/getCourses");
+const allClasses = require("./routes/AdminTasks/allClasses");
 
 /*------ App Config---------------*/
 
@@ -129,6 +130,7 @@ app.use("/api/addcalendar", calendarRoute);
 app.use("/api/allusers", viewUsers);
 app.use("/api/class", studClass);
 app.use("/api/course", studCourse);
+app.use("/api/getclasses", allClasses);
 
 // For Faculty only
 

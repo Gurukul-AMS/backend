@@ -3,6 +3,23 @@ const router = express.Router();
 const User = require("../../models/roles/user");
 const Log = require("../../models/content/log");
 
+router.get("/", function(req, res){
+
+    var studArr = [];
+
+    User.find({role: "Student"}, function(err, students){
+        if(err) {
+            console.log(err);
+            res.send("Nope");
+        } else if (students) {
+            res.send(students);
+        } else {
+            console.log("No students found");
+            res.send("Nope");
+        }
+    });
+});
+
 router.post("/", function(req, res){
 
     if(req.user.role == "Admin") {
