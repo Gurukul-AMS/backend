@@ -132,7 +132,7 @@ app.use("/api/allusers", viewUsers);
 app.use("/api/class", studClass);
 app.use("/api/course", studCourse);
 app.use("/api/getclasses", allClasses);
-app.use("/api/getcourses", allCourses);
+app.use("/api/allcourses", allCourses);
 
 // For Faculty only
 

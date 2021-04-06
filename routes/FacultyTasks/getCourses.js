@@ -3,7 +3,11 @@ const router = express.Router();
 const Course = require("../../models/content/course");
 
 router.get("/", function(req, res){
+
+
+    console.log("Work please");
     if(req.user.role == "Faculty") {
+
     
         Course.find({profName: req.user._id}, function(err, results){
 
@@ -12,7 +16,7 @@ router.get("/", function(req, res){
 
             } else if(results) { 
                 res.send(results);
-            }
+            } 
         });
     }
 });
