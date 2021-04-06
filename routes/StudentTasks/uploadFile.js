@@ -35,7 +35,7 @@ router.post("/", upload.single('myFile'), function(req, res){
             if(err){
                 console.log(err);
             } else {
-                res.send("Done");
+                console.log("Success!");
             }
         });
         

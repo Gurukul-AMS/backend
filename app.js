@@ -109,6 +109,7 @@ const allClasses = require("./routes/AdminTasks/allClasses");
 const allCourses = require("./routes/AdminTasks/allCourses");
 const uploadPic = require("./routes/Profile/uploadPicture");
 const uploadFile = require("./routes/StudentTasks/uploadFile");
+const updateUser = require("./routes/AdminTasks/updateUser");
 
 /*------ App Config---------------*/
 
@@ -136,6 +137,7 @@ app.use("/api/class", studClass);
 app.use("/api/course", studCourse);
 app.use("/api/getclasses", allClasses);
 app.use("/api/allcourses", allCourses);
+app.use("/api/updateuser", updateUser);
 
 // For Faculty only
 
