@@ -108,6 +108,7 @@ const myCourse = require("./routes/StudentTasks/getCourses");
 const allClasses = require("./routes/AdminTasks/allClasses");
 const allCourses = require("./routes/AdminTasks/allCourses");
 const uploadPic = require("./routes/Profile/uploadPicture");
+const uploadFile = require("./routes/StudentTasks/uploadFile");
 
 /*------ App Config---------------*/
 
@@ -149,6 +150,7 @@ app.use("/api/viewattend", viewAttend);
 app.use("/api/sendclass", sendClass);
 app.use("/api/sendcourse", sendCourse);
 app.use("/api/mycourse", myCourse);
+app.use("/api/uploadfile", uploadFile);
 
 /*------ App Config Done--------- */
 
