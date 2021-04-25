@@ -8,7 +8,7 @@ const courseSchema  = new mongoose.Schema({
     profName: String,
     students: [String],
     timeTable: {
-        data: Buffer,
+        data: String,
         contentType: String
     }
 });

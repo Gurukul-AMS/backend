@@ -111,6 +111,7 @@ const uploadPic = require("./routes/Profile/uploadPicture");
 const uploadFile = require("./routes/StudentTasks/uploadFile");
 const updateUser = require("./routes/AdminTasks/updateUser");
 const uploadTime = require("./routes/AdminTasks/uploadTime");
+const viewTime = require("./routes/General/viewTime");
 
 /*------ App Config---------------*/
 
@@ -127,6 +128,7 @@ app.use("/api/notifs", notifRoute);
 app.use("/api/makenotifs", makeNotifs);
 app.use("/api/uploadpic", uploadPic);
 app.use("/api/allusers", viewUsers);
+app.use("/api/viewtime", viewTime);
 
 // For Admin only
 
