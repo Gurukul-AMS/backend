@@ -5,7 +5,7 @@ const classSchema  = new mongoose.Schema({
     section: String,
     semester: String,
     timeTable: {
-        data: Buffer,
+        data: String,
         contentType: String
     }
 });
