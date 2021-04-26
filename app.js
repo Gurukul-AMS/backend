@@ -110,7 +110,8 @@ const allCourses = require("./routes/AdminTasks/allCourses");
 const uploadPic = require("./routes/Profile/uploadPicture");
 const uploadFile = require("./routes/StudentTasks/uploadFile");
 const updateUser = require("./routes/AdminTasks/updateUser");
-const uploadTime = require("./routes/AdminTasks/uploadTime");
+const uploadClassTime = require("./routes/AdminTasks/uploadClassTime");
+const uploadCourseTime = require("./routes/AdminTasks/uploadCourseTime");
 const viewTime = require("./routes/General/viewTime");
 
 /*------ App Config---------------*/
@@ -141,7 +142,8 @@ app.use("/api/course", studCourse);
 app.use("/api/getclasses", allClasses);
 app.use("/api/allcourses", allCourses);
 app.use("/api/updateuser", updateUser);
-app.use("/api/uploadtime", uploadTime);
+app.use("/api/class/uploadtime", uploadClassTime);
+app.use("/api/course/uploadtime", uploadCourseTime);
 
 // For Faculty only
 

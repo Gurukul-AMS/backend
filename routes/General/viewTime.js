@@ -6,7 +6,7 @@ const Class = require("../../models/content/class");
 router.get("/", function(req, res){
     if(req.user.role == "Student") {
 
-        Class.findOne({semester: req.body.sem, section: req.body.class}, function(err, found){
+        Class.findOne({_id: req.user.class}, function(err, found){
             if(err){
                 console.log(err);
             } else if (found) {
@@ -18,11 +18,11 @@ router.get("/", function(req, res){
 
     } else if(req.user.role == "Faculty") {
 
-        Course.findOne({semester: req.body.sem, profName: req.body.prof}, function(err, found){
+        Course.findOne({profName: req.user.username}, function(err, results){
             if(err){
                 console.log(err);
-            } else if (found) {
-                res.send(found);
+            } else if (results) {
+                res.send(results);
             } else {
                 res.send("Not found");
             }
