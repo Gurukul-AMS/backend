@@ -20,6 +20,17 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage});
 
+router.get("/", function(req, res){
+
+    Class.find({}, function(err, results){
+        if(err){
+            console.log(err);
+        } else if(results) {
+            res.send(results);
+        }
+    });
+});
+
 router.post("/", upload.single('image'), function(req, res){
     if(req.user.role == "Admin") {
 
@@ -58,7 +69,7 @@ router.post("/", upload.single('image'), function(req, res){
                         console.log(err);
                     } else {
                         console.log("Updated Profile Pic");
-                        res.send("Done");
+                        // res.send("Done");
                     }
                 });
 
