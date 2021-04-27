@@ -25,23 +25,32 @@ router.post("/", function(req, res) {
     
     if(req.user.role == "Admin") {
 
-        const course = new Course({
-            courseName: req.body.course,
-            semester: req.body.semester,
-            section: req.body.section,
-            profName: req.body.professor,
-            students: [],
-            timeTable: {
-                data: req.body.data,
-                contentType: req.body.content
-            }
-        });
-
-        course.save(function(err) {
-            if (err) {
+        Course.findOne({courseName: req.body.course}, function(err, found){
+            if(err) {
                 console.log(err);
+            } else if (found) {
+                res.send("Course already exists");
             } else {
-                console.log("New course added.");
+
+                const course = new Course({
+                    courseName: req.body.course,
+                    semester: req.body.semester,
+                    section: req.body.section,
+                    profName: req.body.professor,
+                    students: [],
+                    timeTable: {
+                        data: req.body.data,
+                        contentType: req.body.content
+                    }
+                });
+        
+                course.save(function(err) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log("New course added.");
+                    }
+                });
             }
         });
     }

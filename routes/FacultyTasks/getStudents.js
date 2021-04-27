@@ -7,7 +7,7 @@ router.post("/", function(req, res){
 
     if(req.user.role == "Faculty") {
 
-        Course.findOne({semester: req.body.semester, profName: req.user.username}, function(err, found){
+        Course.findOne({semester: req.body.semester, courseName: req.user.course}, function(err, found){
             if(err) {
                 console.log(err);
             } else if(found) {
@@ -28,4 +28,6 @@ router.post("/", function(req, res){
         });
 
     }
-})
+});
+
+module.exports = router;

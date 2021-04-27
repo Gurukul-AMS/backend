@@ -4,7 +4,8 @@ const findOrCreate = require("mongoose-findorcreate");
 const attendanceSchema = new mongoose.Schema({
     course: String,
     date: String,
-    present: [String]
+    present: [String],
+    absent: [String]
 });
 
 attendanceSchema.plugin(findOrCreate);

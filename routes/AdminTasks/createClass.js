@@ -10,24 +10,35 @@ router.post("/", function(req, res){
 
     if(req.user.role == "Admin")
     {
-        const newClass = new Class({
-            section: req.body.section,
-            semester: req.body.semester,
-            timeTable: {
-                data: req.body.data,
-                contentType: req.body.content
-            }
-        });
-
-        newClass.save(function(err){
-            if (err) {
+        Class.findOne({section: req.body.section, semester: req.body.semester}, function(err,found){
+            if(err) {
                 console.log(err);
+            } else if (found) {
+                res.send("Class already exists");
             } else {
-                console.log("New class added.");
+                
+                const newClass = new Class({
+                    section: req.body.section,
+                    semester: req.body.semester,
+                    timeTable: {
+                        data: req.body.data,
+                        contentType: req.body.content
+                    }
+                });
+        
+                newClass.save(function(err){
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log("New class added.");
+                    }
+                });
+        
+                res.redirect("/api/profile");
             }
-        });
+        })
+        
 
-        res.redirect("/api/profile");
     }
     else
     {

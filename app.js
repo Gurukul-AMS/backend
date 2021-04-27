@@ -113,6 +113,7 @@ const updateUser = require("./routes/AdminTasks/updateUser");
 const uploadClassTime = require("./routes/AdminTasks/uploadClassTime");
 const uploadCourseTime = require("./routes/AdminTasks/uploadCourseTime");
 const viewTime = require("./routes/General/viewTime");
+const getStudents = require("./routes/FacultyTasks/getStudents");
 
 /*------ App Config---------------*/
 
@@ -150,6 +151,7 @@ app.use("/api/course/uploadtime", uploadCourseTime);
 app.use("/api/addmarks", uploadMarks);
 app.use("/api/addattend", upAttendance);
 app.use("/api/getcourses", getCourses);
+app.use("/api/getstudents", getStudents);
 
 // For Student only
 
