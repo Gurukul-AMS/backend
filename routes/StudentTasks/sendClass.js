@@ -53,7 +53,7 @@ router.post("/", function(req, res){
                 const notif = new Notification({
                     from: req.user.username,
                     to: adminId,
-                    content: "Add me to semester " + thisClass['semester'] + ", section " + thisClass['section'],
+                    content: "Add me to semester " + thisClass.semester + ", section " + thisClass.section,
                     time: nowTime,
                     date: nowDate,
                     status: false
