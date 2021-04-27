@@ -5,7 +5,7 @@ const Course = require("../../models/content/course");
 router.get("/", function(req, res){
 
 
-    console.log("Work please");
+    // console.log("Work please");
     if(req.user.role == "Faculty") {
 
     

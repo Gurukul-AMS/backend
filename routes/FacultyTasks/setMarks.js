@@ -25,39 +25,79 @@ router.post("/", function(req, res) {
     
     if(req.user.role == "Faculty")
     {
-        const marks = new Marks({
-            component: req.body.component,
-            section: req.body.class,
-            semester: req.body.semester,
-            course: req.body.course,
-            record: {
-                id: req.body.student,
-                scored: req.body.cg
-            }
-        });
-
-        marks.save(function(err){
+        Marks.findOne({component: req.body.component, 'record.id': req.body.student, course: req.body.course}, function(err, found){
             if(err){
                 console.log(err);
-            } else {
+            } else if(found) {
 
-                var temp = new Date();
-                var nowDate = temp.getFullYear() + '/' + (temp.getMonth()+1) + '/' + temp.getDate();
-                var nowTime = temp.getHours() + ':' + temp.getMinutes() + ':' + temp.getSeconds();
-                
-                const log = new Log({
-                    time: nowTime,
-                    date: nowDate,
-                    action: "Uploaded Marks",
-                    actor: req.user.username
-                });
+                console.log("Here we are");
+                found.record['scored'] = req.body.cg;
+                console.log(found);
 
-                log.save(function(err){
-                    if(err) {
+                found.save(function(err){
+                    if(err){
                         console.log(err);
                     } else {
-                        console.log("Marks updated");
-                        res.send(true);
+        
+                        var temp = new Date();
+                        var nowDate = temp.getFullYear() + '/' + (temp.getMonth()+1) + '/' + temp.getDate();
+                        var nowTime = temp.getHours() + ':' + temp.getMinutes() + ':' + temp.getSeconds();
+                        
+                        const log = new Log({
+                            time: nowTime,
+                            date: nowDate,
+                            action: "Uploaded Marks",
+                            actor: req.user.username
+                        });
+        
+                        log.save(function(err){
+                            if(err) {
+                                console.log(err);
+                            } else {
+                                console.log("Marks updated");
+                                res.send(true);
+                            }
+                        });
+                    }
+                });
+
+            } else {
+
+                const marks = new Marks({
+                    component: req.body.component,
+                    section: req.body.class,
+                    semester: req.body.semester,
+                    course: req.body.course,
+                    record: {
+                        id: req.body.student,
+                        scored: req.body.cg
+                    }
+                });
+        
+                marks.save(function(err){
+                    if(err){
+                        console.log(err);
+                    } else {
+        
+                        var temp = new Date();
+                        var nowDate = temp.getFullYear() + '/' + (temp.getMonth()+1) + '/' + temp.getDate();
+                        var nowTime = temp.getHours() + ':' + temp.getMinutes() + ':' + temp.getSeconds();
+                        
+                        const log = new Log({
+                            time: nowTime,
+                            date: nowDate,
+                            action: "Uploaded Marks",
+                            actor: req.user.username
+                        });
+        
+                        log.save(function(err){
+                            if(err) {
+                                console.log(err);
+                            } else {
+                                console.log("Marks updated");
+                                res.send(true);
+                            }
+                        });
                     }
                 });
             }
