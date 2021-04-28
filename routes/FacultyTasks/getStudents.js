@@ -7,23 +7,24 @@ router.post("/", function(req, res){
 
     if(req.user.role == "Faculty") {
 
-        Course.findOne({semester: req.body.semester, courseName: req.user.course}, function(err, found){
+        var studArr= [];
+
+        Course.findOne({semester: req.body.semester, courseName: req.body.course}, async function(err, found){
             if(err) {
                 console.log(err);
             } else if(found) {
 
-                found.students.forEach(function(student){
-                    User.find({username: student}, function(err, results){
-                        if(err) {
-                            console.log(err);
-                        } else if(results) {
-                            res.send(results);
-                            console.log("Students found!");
-                        }
-                    });
-                });
+                var allStud = found.students;
 
+                try {
+                    studArr = await User.find().where('username').in(allStud).exec();
+                } catch (err) {
+                    console.log(err);
+                }
+                // console.log(studArr);
+                res.send(studArr);
                 console.log("Everything is alright.");
+
             }
         });
 
