@@ -20,7 +20,8 @@ router.post("/", function(req, res){
                 section: req.body.section,
                 course: req.body.course,
                 date: nowDay,
-                present: req.body.studentList
+                present: req.body.presentList,
+                absent: req.body.absentList
             });
 
             attendance.save(function(err){

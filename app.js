@@ -96,7 +96,8 @@ const getCourses = require("./routes/FacultyTasks/getCourses");
 const uploadMarks = require("./routes/FacultyTasks/setMarks");
 const upAttendance = require("./routes/FacultyTasks/markAttendance");
 const viewMarks = require("./routes/StudentTasks/viewMarks");
-const viewAttend = require("./routes/StudentTasks/viewAttendance");
+const viewPresent = require("./routes/StudentTasks/viewPresent");
+const viewAbsent = require("./routes/StudentTasks/viewAbsent");
 const viewUsers = require("./routes/AdminTasks/allUsers");
 const studClass = require("./routes/AdminTasks/updateClass");
 const studCourse = require("./routes/AdminTasks/updateCourse");
@@ -156,7 +157,8 @@ app.use("/api/getstudents", getStudents);
 // For Student only
 
 app.use("/api/viewmarks", viewMarks);
-app.use("/api/viewattend", viewAttend);
+app.use("/api/viewpresent", viewPresent);
+app.use("/api/viewabsent", viewAbsent);
 app.use("/api/sendclass", sendClass);
 app.use("/api/sendcourse", sendCourse);
 app.use("/api/mycourse", myCourse);
