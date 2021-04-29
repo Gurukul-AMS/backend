@@ -130,7 +130,6 @@ app.use("/api/logout", logoutRoute);
 app.use("/api/notifs", notifRoute);
 app.use("/api/makenotifs", makeNotifs);
 app.use("/api/uploadpic", uploadPic);
-app.use("/api/allusers", viewUsers);
 app.use("/api/viewtime", viewTime);
 
 // For Admin only
@@ -146,6 +145,7 @@ app.use("/api/allcourses", allCourses);
 app.use("/api/updateuser", updateUser);
 app.use("/api/class/uploadtime", uploadClassTime);
 app.use("/api/course/uploadtime", uploadCourseTime);
+app.use("/api/allusers", viewUsers);
 
 // For Faculty only
 
