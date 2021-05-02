@@ -47,7 +47,7 @@ router.post("/", function(req, res){
                 if(err) {
                     console.log(err);
                 } else {
-                    console.log("Updated Profile Pic");
+                    console.log("Log updated");
                     // res.send("Done");
                 }
             });

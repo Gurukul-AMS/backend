@@ -26,7 +26,7 @@ router.post("/", function(req, res){
                 var nowTime = temp.getHours() + ':' + temp.getMinutes() + ':' + temp.getSeconds();
         
                 const notif = new Notification({
-                    from: req.user._id,
+                    from: req.user.username,
                     to: adminArr,
                     content: "First name: " + req.body.firstName + ", Last name: " + req.body.lastName + ", email: " + req.body.email,
                     time: nowTime,
