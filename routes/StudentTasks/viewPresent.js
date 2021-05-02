@@ -13,15 +13,16 @@ router.get("/", function(req, res){
             } else if(found){
                 res.send(found);
 
-                var presentNum = found.present.length;
-                var absentNum = found.absent.length();
-
                 var temp = new Date();
                 var nowDate = temp.getFullYear() + '/' + (temp.getMonth +1) + '/' + temp.getDate();
                 var nowTime = temp.getHours() + ':' + temp.getMinutes() + ':' + temp.getSeconds();
 
-                if(presentNum < 3 * absentNum) {
-                    
+                if(absentNum==null)
+                {
+                    console.log("All looks good!");
+                }
+                else if(presentNum==null)
+                {
                     const notif = new Notification({
                         from: "Admins",
                         to: [req.user._id],
@@ -39,6 +40,33 @@ router.get("/", function(req, res){
                         }
                     });
                 }
+
+                else if(presentNum!==null && absentNum!==null)
+                {
+                    var presentNum = found.present.length;
+                    var absentNum = found.absent.length();
+    
+                    if(presentNum < 3 * absentNum) {
+                        
+                        const notif = new Notification({
+                            from: "Admins",
+                            to: [req.user._id],
+                            content: "Caution! Your attendance is less than 75%. Attend more classes.",
+                            time: nowTime,
+                            date: nowDate,
+                            status: false
+                        });
+    
+                        notif.save(function(err){
+                            if(err){
+                                console.log(err);
+                            } else {
+                                console.log("Notification sent!");
+                            }
+                        });
+                    }
+                }
+                
             }
         });
     }
