@@ -11,25 +11,9 @@ router.get('/', function(req, res){
         // console.log(req.user.role);
 
         if(req.user.role == 'Student') {
-            var temp = new Date();
-            var nowDate = temp.getFullYear()+'/'+(temp.getMonth()+1)+'/'+temp.getDate();
-            var nowTime = temp.getHours()+':'+temp.getMinutes()+':'+temp.getSeconds();
+            
+            res.send(req.user);
 
-            const log = new Log({
-                time: nowTime,
-                date: nowDate,
-                action: "Viewed Profile",
-                actor: req.user.username
-
-            });
-
-            log.save(function(err){
-                if(err) {
-                    console.log(err);
-                } else {
-                    res.send(req.user);
-                }
-            });
         }
         else if(req.user.role == 'Faculty') {
         
@@ -51,26 +35,8 @@ router.post('/', function(req, res){
         console.log("You can view your profile");
 
         if(req.user.role=="Student") {
-            var temp = new Date();
-            var nowDate = temp.getFullYear+'/'+(temp.getMonth()+1)+'/'+temp.getDate();
-            var nowTime = temp.getHours()+':'+temp.getMinutes()+':'+temp.getSeconds();
+            res.send(req.user);
 
-            const log = new Log({
-                time: nowTime,
-                date: nowDate,
-                action: "Viewed Profile",
-                actor: req.user.username
-
-            });
-
-            log.save(function(err){
-                if(err) {
-                    console.log(err);
-                } else {
-                    res.send(req.user);
-                    console.log("Log updated.");
-                }
-            });
         }
         else if(req.use.role=="Faculty") {
 
@@ -86,27 +52,9 @@ router.post('/', function(req, res){
                 }
             });
 
-            var temp = new Date();
-            var nowDate = temp.getFullYear+'/'+(temp.getMonth()+1)+'/'+temp.getDate();
-            var nowTime = temp.getHours()+':'+temp.getMinutes()+':'+temp.getSeconds();
-
-            const log = new Log({
-                time: nowTime,
-                date: nowDate,
-                action: "Viewed Profile",
-                actor: req.user.username
-
-            });
-
-            log.save(function(err){
-                if(err) {
-                    console.log(err);
-                } else {
-                    user[info] = req.user;
-                    user[other] = courses;
-                    res.send(user);
-                }
-            })
+            user[info] = req.user;
+            user[other] = courses;
+            res.send(user);
         }
 
         
