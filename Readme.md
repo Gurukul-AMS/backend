@@ -12,7 +12,7 @@ Please install the following programs to be able to run this project.
 1. Download this repository.
 1. Having installed all the pre-requisites, go to the root directory, open git bash and type "npm install". This will automatically install all the dependencies you need in order to run the project.
 1. Now you can run the back end. Simply open git bash and type "nodemon app.js". This will start your local server. Please note that if you wish to run the front end, you must first start the back end.
-1. You can now follow the instructions [here]() to run the front end. That's it!
+1. You can now follow the instructions [here](https://github.com/Gurukul-AMS/frontend/blob/main/Readme.md) to run the front end. That's it!
 
 We hope you like our website! For any queries, refer to the video demonstration of the website.
 
