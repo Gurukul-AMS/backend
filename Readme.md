@@ -20,7 +20,7 @@ We hope you like our website! For any queries, refer to the video demonstration 
 
 Member Name | GitHub ID
 ----------- | ---------
-Aaryan Bhardwaj | ![Aaryan](https://avatars.githubusercontent.com/u/57333555?s=96&v=4) [uglyprincess](https://github.com/uglyprincess)
-Pratham Punj | ![Pratham](https://avatars.githubusercontent.com/u/56146599?s=96&v=4) [Sensibleprat](https://github.com/Sensibleprat)
-Anirudh S | ![Anirudh](https://avatars.githubusercontent.com/u/58392171?s=96&v=4) [anirudh2019](https://github.com/anirudh2019)
-Somesh Maurya | ![Somesh](https://avatars.githubusercontent.com/u/77438447?v=4) [SomeshMAURYA7007](https://github.com/SomeshMAURYA7007)
+Aaryan Bhardwaj <br> IIT2019035 | ![Aaryan](https://avatars.githubusercontent.com/u/57333555?s=96&v=4) <br> [uglyprincess](https://github.com/uglyprincess)
+Pratham Punj <br> IIT2019040 | ![Pratham](https://avatars.githubusercontent.com/u/56146599?s=96&v=4) <br> [Sensibleprat](https://github.com/Sensibleprat)
+Anirudh S <br> IIT2019068 | ![Anirudh](https://avatars.githubusercontent.com/u/58392171?s=96&v=4) <br> [anirudh2019](https://github.com/anirudh2019)
+Somesh Maurya <br> IIT2019080 | ![Somesh](https://avatars.githubusercontent.com/u/77438447?v=4) <br> [SomeshMAURYA7007](https://github.com/SomeshMAURYA7007)
