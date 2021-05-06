@@ -49,6 +49,8 @@ router.post("/", function(req, res){
                         action: "Deleted User "+ req.body.whichUser
                     });
 
+                    // res.sendStatus(200);
+
                     log.save(function(err){
                         if(err){
                             console.log(err);

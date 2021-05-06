@@ -24,7 +24,7 @@ router.get("/", function(req, res){
 });
 
 router.post("/", function(req ,res){
-    if(req.user.role == "Admin" || req.user.role == "Faculty") {
+    if(req.user) {
 
         var temp = new Date();
         var nowDate = temp.getFullYear() + '/' + (temp.getMonth() +1) + '/' + temp.getDate();

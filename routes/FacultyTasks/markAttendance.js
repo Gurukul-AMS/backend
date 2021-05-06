@@ -19,7 +19,7 @@ router.post("/", function(req, res){
                 semester: req.body.semester,
                 section: req.body.section,
                 course: req.body.course,
-                date: nowDay,
+                date: req.body.date,
                 present: req.body.presentList,
                 absent: req.body.absentList
             });
