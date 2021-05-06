@@ -101,6 +101,7 @@ const viewAbsent = require("./routes/StudentTasks/viewAbsent");
 const viewUsers = require("./routes/AdminTasks/allUsers");
 const studClass = require("./routes/AdminTasks/updateClass");
 const studCourse = require("./routes/AdminTasks/updateCourse");
+const sendAlert = require("./routes/AdminTasks/sendAlert");
 const sendClass = require("./routes/StudentTasks/sendClass");
 const sendCourse = require("./routes/StudentTasks/sendCourse");
 const notifRoute = require("./routes/General/getNotifs");
@@ -148,6 +149,7 @@ app.use("/api/updateuser", updateUser);
 app.use("/api/class/uploadtime", uploadClassTime);
 app.use("/api/course/uploadtime", uploadCourseTime);
 app.use("/api/allusers", viewUsers);
+app.use("/api/sendalert", sendAlert);
 
 // For Faculty only
 

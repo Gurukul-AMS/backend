@@ -11,7 +11,15 @@ router.get("/", function(req, res){
             } else if (users) {
                 res.send(users);
             }
-        })
+        });
+    } else if(req.user.role == "Student") {
+        User.find({role: "Faculty"}, function(err, users){
+            if(err){
+                console.log(err);
+            } else if (users) {
+                res.send(users);
+            }
+        });
     }
 });
 
@@ -19,7 +27,7 @@ router.post("/", function(req ,res){
     if(req.user.role == "Admin" || req.user.role == "Faculty") {
 
         var temp = new Date();
-        var nowDate = temp.getFullYear() + '/' + (temp.getMonth +1) + '/' + temp.getDate();
+        var nowDate = temp.getFullYear() + '/' + (temp.getMonth() +1) + '/' + temp.getDate();
         var nowTime = temp.getHours() + ':' + temp.getMinutes() + ':' + temp.getSeconds();
 
         const newNotif = new Notification({

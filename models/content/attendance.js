@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const findOrCreate = require("mongoose-findorcreate");
 
 const attendanceSchema = new mongoose.Schema({
-    course: String,
+    course: String, //course ID
     date: String,
     present: [String],
     absent: [String]

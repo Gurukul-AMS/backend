@@ -13,8 +13,26 @@ router.get("/", function(req, res){
                 res.send(found);
             }
         });
-    }
+    } 
 
+});
+
+router.post("/", function(req, res){
+
+    if(req.user.role == "Admin") {
+
+        Attendance.find({absent: req.body.student, course: req.body.course}, function(err, found){
+            if(err){
+                console.log(err);
+                res.sendStatus(500);
+            } else if (found) {
+                // console.log(found, found.length);
+                res.send(JSON.stringify(found.length));
+            } else {
+                res.sendStatus(404);
+            }
+        });
+    }
 });
 
 module.exports = router;
