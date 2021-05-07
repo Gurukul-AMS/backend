@@ -33,6 +33,22 @@ router.post("/", function(req, res){
 
         if(req.body.action == "Delete") {
 
+            var name = "";
+
+            if(req.body.whichUser) {
+                
+                User.findOne({_id: req.body.whichUser}, function(err, found){
+                    if(err){
+                        console.log(err);
+                        res.sendStatus(500);
+                    } else if (found) {
+                        name = found.username;
+                    } else {
+                        res.sendStatus(404);
+                    }
+                })
+            }
+
             User.deleteOne({_id: req.body.whichUser}, function(err){
                 if(err) {
                     console.log(err);
@@ -46,7 +62,7 @@ router.post("/", function(req, res){
                         date: nowDate,
                         time: nowTime,
                         actor: req.user.username,
-                        action: "Deleted User "+ req.body.whichUser
+                        action: "Deleted User "+ name,
                     });
 
                     // res.sendStatus(200);
