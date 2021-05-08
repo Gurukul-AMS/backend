@@ -17,7 +17,7 @@ router.post("/", (req, res) => {
             console.log(err);
         } else {
             passport.authenticate("local")(req, res, function(){
-                User.findOneAndUpdate({username: req.body.username}, {role: role}, function (err){
+                User.findOneAndUpdate({username: req.body.username}, {role: role, 'profilePic.data': req.body.pic, 'profilePic.contentType': 'image/png'}, function (err){
                     if(err) {
                         console.log(err);
                     } else {
