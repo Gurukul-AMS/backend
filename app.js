@@ -50,16 +50,18 @@ app.use(passport.session());
 /* -------- MongoDB Connection --------------*/
 
 
-var MONGODB_URI = "";
+// var MONGODB_URI = "";
 
-MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@buildone.ttypp.mongodb.net/amsDB?retryWrites=true&w=majority`
+// MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@buildone.ttypp.mongodb.net/amsDB?retryWrites=true&w=majority`
 
-mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+
+mongoose.connect('mongodb://localhost:27017/gurukulDB', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', function(){
-  console.log("MongoDB Atlas Server Started!");
+  console.log("MongoDB Local Server Started!");
 });
 
 /* -------- MongoDB Connection Setup Ended ---- */

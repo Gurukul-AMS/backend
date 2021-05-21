@@ -8,7 +8,7 @@ var useName = "";
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb (null, '../frontend/public/calendar');
+        cb (null, '../frontend-main/public/calendar');
     },
 
     filename: (req, file, cb) => {

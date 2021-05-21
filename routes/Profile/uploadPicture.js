@@ -9,7 +9,7 @@ var useName = "";
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb (null, '../frontend/public/display_images');
+        cb (null, '../frontend-main/public/display_images');
     },
 
     filename: (req, file, cb) => {
